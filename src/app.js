@@ -3,7 +3,7 @@
 // JSX - Javascrip XML
 
 const app = {
-  title: "John",
+  title: "🥐 🇫🇷 🚀",
   subtitle: "This is JSX from app.js",
   options: []
 };
@@ -23,6 +23,12 @@ const removeAll = () => {
   renderApp();
 };
 
+const onMakeDecision = () => {
+  const randomNum = Math.floor(Math.random() * app.options.length);
+  const option = app.options[randomNum]
+  alert(option);
+};
+
 const renderApp = () => {
   const template = (
     <div>
@@ -34,9 +40,12 @@ const renderApp = () => {
         <p>No Options</p>
       )}
       <p>{app.options.length}</p>
+      <button disabled={app.options.length < 1} onClick={onMakeDecision}>What Should I Do</button>
       <button onClick={removeAll}>Remove All</button>
       <ol>
-        {app.options.map((option, index) => <li key={index}>{option}</li>)}
+        {app.options.map((option, index) => (
+          <li key={index}>{option}</li>
+        ))}
       </ol>
       <form onSubmit={onFormSubmit}>
         <input type="text" name="option" />

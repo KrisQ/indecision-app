@@ -5,7 +5,7 @@
 // JSX - Javascrip XML
 
 var app = {
-  title: "John",
+  title: "🥐 🇫🇷 🚀",
   subtitle: "This is JSX from app.js",
   options: []
 };
@@ -23,6 +23,12 @@ var onFormSubmit = function onFormSubmit(e) {
 var removeAll = function removeAll() {
   app.options = [];
   renderApp();
+};
+
+var onMakeDecision = function onMakeDecision() {
+  var randomNum = Math.floor(Math.random() * app.options.length);
+  var option = app.options[randomNum];
+  alert(option);
 };
 
 var renderApp = function renderApp() {
@@ -52,6 +58,11 @@ var renderApp = function renderApp() {
       "p",
       null,
       app.options.length
+    ),
+    React.createElement(
+      "button",
+      { disabled: app.options.length < 1, onClick: onMakeDecision },
+      "What Should I Do"
     ),
     React.createElement(
       "button",
