@@ -1,5 +1,3 @@
-console.log("Works");
-
 // live-server public
 // babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch
 // JSX - Javascrip XML
@@ -7,42 +5,49 @@ console.log("Works");
 const app = {
   title: "John",
   subtitle: "This is JSX from app.js",
-  options: ['One', 'Two']
+  options: []
 };
 
-const template = (
-  <div>
-    <h1>{app.title}</h1>
-    {app.subtitle && <p>{app.subtitle}</p>}
-    {app.options.length > 0 ? <p>Here are your options</p> : <p>No Options</p>}
-    <ol>
-      <li>1</li>
-      <li>2</li>
-      <li>3</li>
-    </ol>
-  </div>
-);
-
-const user = {
-  name: "Kristenn",
-  age: 26,
-  location: "New Orleans 🎉"
-};
-
-function getLocation(location) {
-  if (location) {
-    return <p>Location: {location}</p>;
+const onFormSubmit = e => {
+  e.preventDefault();
+  const option = e.target.elements.option.value;
+  if (option) {
+    app.options.push(option);
+    e.target.elements.option.value = "";
   }
-}
+  renderApp();
+};
 
-const templateTwo = (
-  <div>
-    <h1>{user.name ? user.name : 'No Name'}</h1>
-    {(user.age && user.age >= 18) && <p>Age: {user.age}</p>}
-    {getLocation(user.location)}
-  </div>
-);
+const removeAll = () => {
+  app.options = [];
+  renderApp();
+};
 
-const appRoot = document.getElementById("app");
+const renderApp = () => {
+  const template = (
+    <div>
+      <h1>{app.title}</h1>
+      {app.subtitle && <p>{app.subtitle}</p>}
+      {app.options.length > 0 ? (
+        <p>Here are your options</p>
+      ) : (
+        <p>No Options</p>
+      )}
+      <p>{app.options.length}</p>
+      <button onClick={removeAll}>Remove All</button>
+      <ol>
+        {app.options.map((option, index) => <li key={index}>{option}</li>)}
+      </ol>
+      <form onSubmit={onFormSubmit}>
+        <input type="text" name="option" />
+        <button>Add Option</button>
+      </form>
+    </div>
+  );
 
-ReactDOM.render(template, appRoot);
+  const appRoot = document.getElementById("app");
+
+  ReactDOM.render(template, appRoot);
+};
+
+renderApp();
