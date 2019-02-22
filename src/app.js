@@ -6,13 +6,15 @@ console.log("Works");
 
 const app = {
   title: "John",
-  subtitle: "This is JSX from app.js"
+  subtitle: "This is JSX from app.js",
+  options: ['One', 'Two']
 };
 
 const template = (
   <div>
     <h1>{app.title}</h1>
-    <p>{app.subtitle}</p>
+    {app.subtitle && <p>{app.subtitle}</p>}
+    {app.options.length > 0 ? <p>Here are your options</p> : <p>No Options</p>}
     <ol>
       <li>1</li>
       <li>2</li>
@@ -22,26 +24,25 @@ const template = (
 );
 
 const user = {
-  name: "Chris",
+  name: "Kristenn",
   age: 26,
   location: "New Orleans 🎉"
 };
 
 function getLocation(location) {
   if (location) {
-    return location;
+    return <p>Location: {location}</p>;
   }
-  return "Unknown 😕";
 }
 
 const templateTwo = (
   <div>
-    <h1>{user.name}</h1>
-    <p>Age: {user.age}</p>
-    <p>Location: {getLocation(user.location)}</p>
+    <h1>{user.name ? user.name : 'No Name'}</h1>
+    {(user.age && user.age >= 18) && <p>Age: {user.age}</p>}
+    {getLocation(user.location)}
   </div>
 );
 
 const appRoot = document.getElementById("app");
 
-ReactDOM.render(templateTwo, appRoot);
+ReactDOM.render(template, appRoot);

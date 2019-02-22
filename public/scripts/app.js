@@ -8,7 +8,8 @@ console.log("Works");
 
 var app = {
   title: "John",
-  subtitle: "This is JSX from app.js"
+  subtitle: "This is JSX from app.js",
+  options: ['One', 'Two']
 };
 
 var template = React.createElement(
@@ -19,10 +20,19 @@ var template = React.createElement(
     null,
     app.title
   ),
-  React.createElement(
+  app.subtitle && React.createElement(
     "p",
     null,
     app.subtitle
+  ),
+  app.options.length > 0 ? React.createElement(
+    "p",
+    null,
+    "Here are your options"
+  ) : React.createElement(
+    "p",
+    null,
+    "No Options"
   ),
   React.createElement(
     "ol",
@@ -46,16 +56,20 @@ var template = React.createElement(
 );
 
 var user = {
-  name: "Chris",
+  name: "Kristenn",
   age: 26,
   location: "New Orleans 🎉"
 };
 
 function getLocation(location) {
   if (location) {
-    return location;
+    return React.createElement(
+      "p",
+      null,
+      "Location: ",
+      location
+    );
   }
-  return "Unknown 😕";
 }
 
 var templateTwo = React.createElement(
@@ -64,22 +78,17 @@ var templateTwo = React.createElement(
   React.createElement(
     "h1",
     null,
-    user.name
+    user.name ? user.name : 'No Name'
   ),
-  React.createElement(
+  user.age && user.age >= 18 && React.createElement(
     "p",
     null,
     "Age: ",
     user.age
   ),
-  React.createElement(
-    "p",
-    null,
-    "Location: ",
-    getLocation(user.location)
-  )
+  getLocation(user.location)
 );
 
 var appRoot = document.getElementById("app");
 
-ReactDOM.render(templateTwo, appRoot);
+ReactDOM.render(template, appRoot);
