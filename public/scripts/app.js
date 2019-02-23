@@ -20,12 +20,35 @@ var Counter = function (_React$Component) {
     _this.handleMinusOne = _this.handleMinusOne.bind(_this);
     _this.handleReset = _this.handleReset.bind(_this);
     _this.state = {
-      count: props.count
+      count: 0
     };
     return _this;
   }
 
   _createClass(Counter, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      try {
+        var count = parseInt(localStorage.getItem("count"));
+        count && this.setState(function () {
+          return { count: count };
+        });
+        console.log("🚀", count);
+      } catch (e) {
+        console.log("\uD83E\uDD2C Error: " + e);
+      }
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps, prevState) {
+      if (prevState.count !== this.state.count) {
+        var count = this.state.count;
+
+        localStorage.setItem("count", count);
+        console.log("🐝", count);
+      }
+    }
+  }, {
     key: "handleAddOne",
     value: function handleAddOne() {
       this.setState(function (prevState) {
@@ -86,8 +109,4 @@ var Counter = function (_React$Component) {
   return Counter;
 }(React.Component);
 
-Counter.defaultProps = {
-  count: 0
-};
-
-ReactDOM.render(React.createElement(Counter, { count: 4 }), document.getElementById("app"));
+ReactDOM.render(React.createElement(Counter, null), document.getElementById("app"));
