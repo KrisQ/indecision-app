@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Container } from './Styles'
 
 const Header = props => {
   const HeaderWrapper = styled.div`
@@ -20,8 +21,10 @@ const Header = props => {
   `
   return (
     <HeaderWrapper>
-      <Title>{props.title}</Title>
-      {props.subtitle && <Subtitle>{props.subtitle}</Subtitle>}
+      <Container>
+        <Title>{props.title}</Title>
+        {props.subtitle && <Subtitle>{props.subtitle}</Subtitle>}
+      </Container>
     </HeaderWrapper>
   )
 }
