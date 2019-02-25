@@ -4,6 +4,7 @@ import Header from './Header'
 import Action from './Action'
 import Options from './Options'
 import OptionModal from './OptionModal'
+import styled from 'styled-components'
 
 class IndecisionApp extends React.Component {
   state = {
@@ -58,10 +59,19 @@ class IndecisionApp extends React.Component {
   }
   render() {
     const subtitle = 'Put your life in the hands of a computer'
-
+    const Wrapper = styled.div`
+      font-family: 'Roboto', 'Helvetica Neue', 'sans-serif';
+    `
+    const styleProps = {
+      offBlack: '#20222b',
+      offWhite: '#a5afd7',
+      sSize: '0.8rem',
+      mSize: '1.6rem',
+      lSize: '2.5rem'
+    }
     return (
-      <div>
-        <Header subtitle={subtitle} />
+      <Wrapper>
+        <Header styleProps={styleProps} subtitle={subtitle} />
         <Action
           hasOptions={this.state.options.length > 0}
           handlePick={this.handlePick}
@@ -76,7 +86,7 @@ class IndecisionApp extends React.Component {
           selectedOption={this.state.selectedOption}
           handleCloseModal={this.handleCloseModal}
         />
-      </div>
+      </Wrapper>
     )
   }
 }
