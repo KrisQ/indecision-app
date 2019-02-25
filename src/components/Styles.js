@@ -6,4 +6,21 @@ const Container = styled.div`
   padding: 0 1.6rem;
 `
 
-export { Container }
+const Button = styled.button`
+  background: #8358c5;
+  border: none;
+  border-bottom: 0.3rem solid #6c49a3;
+  color: ghostwhite;
+  font-weight: 500;
+  padding: 0.7rem;
+`
+
+const Link = styled.button`
+  background: none;
+  border: none;
+  color: #a5afd7;
+  padding: 0;
+  cursor: pointer;
+`
+
+export { Container, Button, Link }

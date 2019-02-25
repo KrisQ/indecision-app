@@ -1,4 +1,5 @@
 import React from 'react'
+import { Button } from './Styles'
 
 class AddOption extends React.Component {
   state = {
@@ -20,7 +21,7 @@ class AddOption extends React.Component {
         {this.state.error && <p>{this.state.error}</p>}
         <form onSubmit={this.handleAddOption}>
           <input type="text" name="option" />
-          <button>Add Option</button>
+          <Button>Add Option</Button>
         </form>
       </div>
     )

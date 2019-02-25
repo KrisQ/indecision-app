@@ -1,11 +1,12 @@
 import React from 'react'
+import { Link } from './Styles'
 
 const Option = props => (
   <div>
     {props.optionText}
-    <button onClick={() => props.handleDeleteOption(props.optionText)}>
+    <Link onClick={() => props.handleDeleteOption(props.optionText)}>
       Remove
-    </button>
+    </Link>
   </div>
 )
 
