@@ -64,6 +64,7 @@ class IndecisionApp extends React.Component {
       offBlack: '#20222b',
       offWhite: '#a5afd7',
       darkBlue: '#333745',
+      purple: '#8358c5',
       sSize: '0.8rem',
       mSize: '1.6rem',
       lSize: '2.5rem'
@@ -78,6 +79,7 @@ class IndecisionApp extends React.Component {
         <Header styleProps={styleProps} subtitle={subtitle} />
         <Container>
           <Action
+            styleProps={styleProps}
             hasOptions={this.state.options.length > 0}
             handlePick={this.handlePick}
           />
