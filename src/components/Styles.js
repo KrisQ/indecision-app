@@ -23,4 +23,30 @@ const Link = styled.button`
   cursor: pointer;
 `
 
-export { Container, Button, Link }
+const WidgetHeader = styled.div`
+  background: #3c4251;
+  color: #a5afd7;
+  padding: 0.7rem;
+  display: flex;
+  justify-content: space-between;
+`
+
+const WidgetBody = styled.div`
+  background: #464b5e;
+  margin-bottom: 2.5rem;
+`
+
+const ModalStyles = styled.div`
+  .ReactModalPortal > div {
+    opacity: 0;
+  }
+  .ReactModalPortal .ReactModal__Overlay {
+    transition: opacity 200ms ease-in-out;
+  }
+  .ReactModalPortal .ReactModal__Overlay--after-open {
+    opacity: 1;
+  }
+
+`
+
+export { Container, Button, Link, WidgetHeader, WidgetBody, ModalStyles }

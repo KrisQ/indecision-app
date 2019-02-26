@@ -5,7 +5,7 @@ import Action from './Action'
 import Options from './Options'
 import OptionModal from './OptionModal'
 import styled from 'styled-components'
-import { Container } from './Styles'
+import { Container, WidgetBody } from './Styles'
 
 class IndecisionApp extends React.Component {
   state = {
@@ -64,6 +64,7 @@ class IndecisionApp extends React.Component {
       offBlack: '#20222b',
       offWhite: '#a5afd7',
       darkBlue: '#333745',
+      blue: '#3c4251',
       purple: '#8358c5',
       sSize: '0.8rem',
       mSize: '1.6rem',
@@ -83,16 +84,18 @@ class IndecisionApp extends React.Component {
             hasOptions={this.state.options.length > 0}
             handlePick={this.handlePick}
           />
-          <Options
-            options={this.state.options}
-            handleDeleteOptions={this.handleDeleteOptions}
-            handleDeleteOption={this.handleDeleteOption}
-          />
-          <AddOption handleAddOption={this.handleAddOption} />
-          <OptionModal
-            selectedOption={this.state.selectedOption}
-            handleCloseModal={this.handleCloseModal}
-          />
+          <WidgetBody>
+            <Options
+              options={this.state.options}
+              handleDeleteOptions={this.handleDeleteOptions}
+              handleDeleteOption={this.handleDeleteOption}
+            />
+            <AddOption handleAddOption={this.handleAddOption} />
+            <OptionModal
+              selectedOption={this.state.selectedOption}
+              handleCloseModal={this.handleCloseModal}
+            />
+          </WidgetBody>
         </Container>
       </Wrapper>
     )
